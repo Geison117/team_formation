@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Football Team Organizer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        input, select, button {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #155fa0;
+        }
+        .team-list {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .team {
+            flex: 1;
+            margin: 0 1rem;
+            padding: 1rem;
+            background-color: #eaf3ff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .team h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .team ul {
+            list-style: none;
+            padding: 0;
+        }
+        .team ul li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #ccc;
+        }
+        .team ul li:last-child {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Football Team Organizer</h1>
+    </header>
+    <div class="container">
+        <h2>Create Teams</h2>
+        <form id="teamForm">
+            <input type="text" id="playerName" placeholder="Enter player's name" required>
+            <select id="teamSelector">
+                <option value="Team A">Team A</option>
+                <option value="Team B">Team B</option>
+            </select>
+            <button type="button" onclick="addPlayer()">Add Player</button>
+        </form>
+        <div class="team-list">
+            <div class="team" id="TeamA">
+                <h3>Team A</h3>
+                <ul>Peñaranda</ul>
+                <ul>Fabian Hinestroza</ul>
+                <ul>Aldair Quintana</ul>
+                <ul>Jimenez</ul>
+                <ul>Dayro Moreno</ul>
+
+
+            </div>
+            <div class="team" id="TeamB">
+                <h3>Team B</h3>
+                <ul>Fabian Sambueza</ul>
+                <ul>Ponce</ul>
+                <ul>Mena</ul>
+                <ul>Fabri Castro</ul>
+                <ul>Teófilo Gutierrez</ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function addPlayer() {
+            const playerName = document.getElementById('playerName').value;
+            const teamSelector = document.getElementById('teamSelector').value;
+            console.log(teamSelector.replace(/ /g, ""))
+
+            if (!playerName) {
+                alert('Please enter a valid name.');
+                return;
+            }
+
+            const teamList = document.querySelector(`#${teamSelector.replace(/ /g, "")} ul`);            
+            const listItem = document.createElement('ul');
+            listItem.textContent = playerName;
+            teamList.appendChild(listItem);
+
+            document.getElementById('playerName').value = '';
+        }
+    </script>
+</body>
+</html>
