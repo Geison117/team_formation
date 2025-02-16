@@ -1,0 +1,33 @@
+
+.cancha {
+  position: relative;
+  width: 525.5px;
+  height: 743.25px;
+  margin: 0px auto;
+  background-image: url('../assets/img/cancha.jpg'); /* Imagen de una cancha de fútbol */
+  background-size: cover;
+  border: 2px solid #000;
+}
+
+.jugador {
+  position: absolute;
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  border: 2px solid white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: pointer;
+  color: white;
+}
+
+.jugador[equipo="rojo"] {
+  background-color: red; /* Color para el equipo rojo*/
+}
+
+.jugador[equipo="azul"] {
+  background-color: blue; /* Color para el equipo azul */
+}
