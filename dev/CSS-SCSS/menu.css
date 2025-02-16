@@ -26,10 +26,10 @@ form {
     justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
-    width: 100%;
-    max-width: 1000px;
+    width: 80%;   
     flex-wrap: wrap;
 }
+
 
 .cancha {
     order: 2; /* Coloca el elemento cancha debajo de los otros dos en pantallas pequeñas */
@@ -121,6 +121,16 @@ form {
     width: 90%;
 }
 
+#titulo_element {
+    display: flex;
+    align-items: center;   
+    justify-content: center; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 320px;
+}
+
 .subtitle {
     font-size: 24px;
     font-weight: bold;
@@ -130,9 +140,9 @@ form {
     padding: 20px 40px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);    
-    text-align: left;
-    width: 50%;  
-      
+    text-align: center;
+    width: 70%;  
+    min-width: 320;      
 }
 
 #max_players{
@@ -180,15 +190,19 @@ form {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
-.botones_recurrentes:hover {
-    background-color: #4ba302; /* Un tono más oscuro al pasar el mouse */
-}
-
 
 .botones_recurrentes:active {
     transform: scale(0.95); /* Efecto de presión al hacer clic */
 }
 
 .botones_recurrentes:disabled {
-    background-color: rgb(160, 253, 91); /* Efecto de presión al hacer clic */
+    background-color: rgb(155, 253, 80); /* Efecto de presión al hacer clic */
+}
+
+#reload_button {
+    background-color: rgb(255,75,75);
+}
+
+#reload_button:disabled{
+    background-color: rgb(255,100,100);
 }

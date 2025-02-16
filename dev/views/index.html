@@ -14,7 +14,11 @@
 
 </head>
 <body>
-    <div class="title">⚽ Football Team Organizer ⚽</div>
+    <div class="title" id="titulo_element">
+        <span>⚽</span>  
+        <span>Football Team Organizer</span> 
+        <span>⚽</span>
+    </div>
     
     <img id = "imagen_inicio" src="../assets/img/chilena.png" class="figure-img img-fluid rounded" alt="...">
 
@@ -39,7 +43,14 @@
                     <option value="11">11</option>                
                 </select>
                 <!-- <input type="number" class="form-control" id="max_players" placeholder="Enter the number of players">             -->
-                <button type="button" class="botones_recurrentes" onclick="addInputs()" id = "confirmation_button">Confirm</button>
+                <button type="button" class="botones_recurrentes" onclick="addInputs()" id = "confirmation_button">
+                    <img id = "imagen_inicio" src="../assets/icons/confirmar_2.png" class="figure-img img-fluid rounded" alt="...">
+                    Confirm
+                </button>
+                <button disabled type="button" class="botones_recurrentes" onclick="reset_number_of_players()" id = "reload_button" >
+                    <img id = "imagen_inicio" src="../assets/icons/reload.png" class="figure-img img-fluid rounded" alt="...">
+                    Reset
+                </button>
             </div>                      
         </div>
 

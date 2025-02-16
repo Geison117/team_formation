@@ -16,11 +16,11 @@ function distributeTeams() {
     for (let i = 0; i < num_players; i++) {
         const playerName = document.getElementById(`playerName${i+1}`).value;
         playerNames.push(playerName);
-        document.getElementById(`playerName${i+1}`).disabled = true;
+        //document.getElementById(`playerName${i+1}`).disabled = true;
     }
 
     // Mezclar la lista de nombres de forma aleatoria
-    playerNames = shuffleArray(playerNames);
+    [playerNames, indices] = shuffleArray(playerNames);
 
     // Dividir la lista en dos mitades
     const half = Math.ceil(playerNames.length / 2);
@@ -36,25 +36,26 @@ function distributeTeams() {
         
         const listItem = document.createElement('li');
         listItem.textContent = name;
+        listItem.id = `tabla_${indices[cont-1]}`;
         teamAList.appendChild(listItem);
         if (cont == 1) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="rojo" style="top: ${6.25 - 2.5}%; left: ${50- 7/2}%;">${name}</div>`;
+            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25 - 2.5}%; left: ${50- 7/2}%;">${name}</div>`;            
         }
 
         else if (cont >= 2 && cont <= 5) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="rojo" style="top: ${6.25*3-2.5}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">${name}</div>`;
+            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25*3-2.5}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">${name}</div>`;
         }
 
         else if (cont >= 6 && cont <= 8) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="rojo" style="top: ${6.25*5-2.5}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">${name}</div>`;
+            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25*5-2.5}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">${name}</div>`;
         }
 
         else if (cont >= 9 && cont <= 11) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="rojo" style="top: ${6.25*7-2.5}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">${name}</div>`;
+            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25*7-2.5}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">${name}</div>`;
         }
         
 
@@ -65,29 +66,42 @@ function distributeTeams() {
     teamB.forEach(name => {
         const listItem = document.createElement('li');
         listItem.textContent = name;
+        listItem.id = `tabla_${indices[num_players/2 +cont-1]}`;
         teamBList.appendChild(listItem);
 
         if (cont == 1) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="azul" style="top: ${100-(6.25 + 2.5)}%; left: ${50- 7/2}%;">${name}</div>`;
+            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25 + 2.5)}%; left: ${50- 7/2}%;">${name}</div>`;
         }
 
         else if (cont >= 2 && cont <= 5) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="azul" style="top: ${100-(6.25*3 + 2.5)}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">${name}</div>`;
+            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*3 + 2.5)}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">${name}</div>`;
         }
 
         else if (cont >= 6 && cont <= 8) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="azul" style="top: ${100-(6.25*5 + 2.5)}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">${name}</div>`;
+            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*5 + 2.5)}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">${name}</div>`;
         }
 
         else if (cont >= 9 && cont <= 11) {
             $cancha.innerHTML += 
-            `<div class="jugador" equipo="azul" style="top: ${100-(6.25*7 + 2.5)}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">${name}</div>`;
+            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*7 + 2.5)}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">${name}</div>`;
         }        
         cont = cont + 1;
     });
+
+    for (let i = 1; i <= num_players; i++) {
+        const $playerName = document.getElementById(`playerName${i}`);
+        
+        $playerName.addEventListener('input', ()=>{
+            const $playerNameListed = document.getElementById(`listado_${i}`);
+            const $playerNameTable = document.getElementById(`tabla_${i}`);
+
+            $playerNameListed.innerHTML = $playerName.value;
+            $playerNameTable.innerHTML = $playerName.value;
+        });
+    }
 
     $random_btn.disabled = true;
     console.log("hola");
@@ -97,11 +111,19 @@ function distributeTeams() {
 
 // Función para mezclar un array (algoritmo de Fisher-Yates)
 function shuffleArray(array) {
+    
+    let indices = [];
+
+    for (let i = 1; i <= array.length; i++) {
+        indices.push(i);
+    }
+
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
+        [indices[i], indices[j]] = [indices[j], indices[i]];
     }
-    return array;
+    return [array, indices];
 }
 
 

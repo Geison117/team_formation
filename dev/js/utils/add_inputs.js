@@ -4,6 +4,7 @@ function addInputs() {
     const $container = document.getElementById("inputs");
     const $names = document.getElementById("names");
     const $nadistribute_random = document.getElementById("distribute_random");
+    const $reload_boton = document.getElementById("reload_button");  
     
     if (!num_players) {
         alert('Please enter the number of players');
@@ -29,4 +30,42 @@ function addInputs() {
     
     $names.hidden = false;
     $nadistribute_random.hidden = false;
+
+    $reload_boton.disabled = false;  
+}
+
+
+function reset_number_of_players(){ 
+    
+    var resultado = window.confirm('This action will delete all the changes of the page. Do you want to continue?');
+    
+    if (resultado === false) {        
+        return
+    }
+    const $container = document.getElementById("inputs");  
+    const $num_players = document.getElementById('max_players'); 
+    const $reload_boton = document.getElementById("reload_button");  
+    const $confirmation_boton = document.getElementById("confirmation_button");
+    const $names = document.getElementById("names");
+    const $team_list = document.getElementById('team_list');
+    const $nadistribute_random = document.getElementById("distribute_random");
+    const $cancha = document.getElementById('espacio_cancha');
+    const $teamAList = document.querySelector('#TeamA ul');
+    const $teamBList = document.querySelector('#TeamB ul');
+
+
+    $container.innerHTML =  ``;   
+    $cancha.innerHTML =  ``;   
+    $teamAList.innerHTML = ``;
+    $teamBList.innerHTML = ``;
+
+    
+    $confirmation_boton.disabled = false;
+    $num_players.disabled = false; 
+    $reload_boton.disabled = true;
+    $names.hidden = true;  
+    $team_list.hidden = true;  
+    $nadistribute_random.hidden = true;       
+    $nadistribute_random.disabled = false;  
+
 }
