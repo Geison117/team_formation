@@ -132,6 +132,7 @@ function mover_jugadores(){
 
 
         function moverJugador_tactil(e) {
+            e.preventDefault()
             // Calcula las nuevas coordenadas relativas a la cancha
             const touch = e.touches[0];
             const x = touch.clientX - rect.left - jugador.offsetWidth / 2;
@@ -147,7 +148,11 @@ function mover_jugadores(){
   
         document.addEventListener('mousemove', moverJugador);
         document.addEventListener('touchmove', moverJugador_tactil);        
-  
+        
+        document.addEventListener('touchend', () => {
+            document.removeEventListener('touchmove', moverJugador_tactil);
+          }, { once: true });
+        
         document.addEventListener('mouseup', () => {
           document.removeEventListener('mousemove', moverJugador);
         }, { once: true });
