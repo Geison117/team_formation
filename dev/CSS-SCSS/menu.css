@@ -23,12 +23,30 @@ form {
 .team-list {
     display: flex;
     text-align: center;    
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 2rem;
     width: 100%;
     max-width: 1000px;
+    flex-wrap: wrap;
 }
+
+.cancha {
+    order: 2; /* Coloca el elemento cancha debajo de los otros dos en pantallas pequeñas */
+}
+
+@media (max-width: 768px) {
+    .team-list {
+        flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */        
+        align-items: center; /* Centra los elementos en pantallas pequeñas */
+    }
+
+    .cancha {
+        order: 3; /* Coloca el elemento cancha debajo de los otros dos en pantallas pequeñas */
+    }
+}
+
+
 
 
 

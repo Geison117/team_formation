@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Responsivo</title>
+    <style>
+        .team-list {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+        }
+
+        .redTeam, .blueTeam, .cancha {
+            flex: 1; /* Hace que los elementos ocupen el mismo espacio */
+            margin: 10px; /* Añade un margen entre los elementos */
+        }
+
+        .cancha {
+            order: 2; /* Coloca el elemento cancha en el centro por defecto */
+        }
+
+        @media (max-width: 768px) {
+            .team-list {
+                flex-direction: column; /* Cambia la dirección a columna en pantallas pequeñas */
+                align-items: center; /* Centra los elementos en pantallas pequeñas */
+            }
+
+            .cancha {
+                order: 3; /* Coloca el elemento cancha debajo de los otros dos en pantallas pequeñas */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="team-list" id="team_list">
+        <div class="redTeam" id="TeamA">
+            <div class="teams">
+                <div class="container text-center">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img src="../assets/img/equipo_rojo.png" class="figure-img img-fluid rounded" alt="...">
+                        </div>
+                        <div class="col">
+                            <h3 style="text-align: center; color: red;">Red Team</h3>
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    <!-- <li>Peñaranda</li>
+                    <li>Fabian Hinestroza</li>
+                    <li>Aldair Quintana</li>
+                    <li>Jimenez</li>
+                    <li>Dayro Moreno</li> -->
+                </ul>
+            </div>
+        </div>
+
+        <div class="cancha" id="espacio_cancha">
+            <!-- Posiciones de los jugadores -->
+        </div>
+
+        <div class="blueTeam" id="TeamB">
+            <div class="teams">
+                <div class="container text-center">
+                    <div class="row align-items-center">
+                        <div class="col">
+                            <img src="../assets/img/equipo_azul.png" class="figure-img img-fluid rounded" alt="...">
+                        </div>
+                        <div class="col">
+                            <h3 style="text-align: center; color: blue;">Blue Team</h3>
+                        </div>
+                    </div>
+                </div>
+                <ul>
+                    <!--<li>Fabian Sambueza</li>
+                    <li>Ponce</li>
+                    <li>Mena</li>
+                    <li>Fabri Castro</li>
+                    <li>Teófilo Gutierrez</li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
