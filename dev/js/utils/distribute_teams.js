@@ -131,10 +131,12 @@ function mover_jugadores(){
         }
   
         document.addEventListener('mousemove', moverJugador);
+        document.addEventListener('touchmove', moverJugador);        
   
         document.addEventListener('mouseup', () => {
           document.removeEventListener('mousemove', moverJugador);
         }, { once: true });
+        
       });
     });
 }

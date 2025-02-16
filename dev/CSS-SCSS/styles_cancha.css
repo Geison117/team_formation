@@ -1,11 +1,12 @@
 
 .cancha {
   position: relative;
-  width: 525.5px;
-  height: 743.25px;
+  width: 420.4px;
+  height: 602.6px;
   margin: 0px auto;
   background-image: url('../assets/img/cancha.jpg'); /* Imagen de una cancha de fútbol */
   background-size: cover;
+  background-color: blue;
   border: 2px solid #000;
 }
 
