@@ -129,9 +129,24 @@ function mover_jugadores(){
           jugador.style.left = `${Math.min(Math.max(x, 0), maxX)}px`;
           jugador.style.top = `${Math.min(Math.max(y, 0), maxY)}px`;
         }
+
+
+        function moverJugador_tactil(e) {
+            // Calcula las nuevas coordenadas relativas a la cancha
+            const touch = e.touches[0];
+            const x = touch.clientX - rect.left - jugador.offsetWidth / 2;
+            const y = touch.clientY - rect.top - jugador.offsetHeight / 2;
+    
+            // Limita el movimiento dentro de la cancha
+            const maxX = rect.width - jugador.offsetWidth;
+            const maxY = rect.height - jugador.offsetHeight;
+    
+            jugador.style.left = `${Math.min(Math.max(x, 0), maxX)}px`;
+            jugador.style.top = `${Math.min(Math.max(y, 0), maxY)}px`;
+          }
   
         document.addEventListener('mousemove', moverJugador);
-        document.addEventListener('touchmove', moverJugador);        
+        document.addEventListener('touchmove', moverJugador_tactil);        
   
         document.addEventListener('mouseup', () => {
           document.removeEventListener('mousemove', moverJugador);
