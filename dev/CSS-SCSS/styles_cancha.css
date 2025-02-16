@@ -23,6 +23,7 @@
   font-size: 12px;
   cursor: pointer;
   color: white;
+  touch-action: none;
 }
 
 .jugador[equipo="rojo"] {
