@@ -1,5 +1,5 @@
 function distributeTeams() {
-    console.log("hola");
+    
     const num_players = 2*document.getElementById('max_players').value;
     const $random_btn = document.getElementById('distribute_random');
     const $team_list = document.getElementById('team_list');
@@ -32,6 +32,10 @@ function distributeTeams() {
     const teamBList = document.querySelector('#TeamB ul');
 
     var cont = 1;
+    teamAList.innerHTML = ``;
+    teamBList.innerHTML = ``;
+    $cancha.innerHTML = ``;
+
     teamA.forEach(name => {
         
         const listItem = document.createElement('li');
@@ -86,7 +90,9 @@ function distributeTeams() {
 
         else if (cont >= 9 && cont <= 11) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*7 + 2.5)}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">${name}</div>`;
+            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*7 + 2.5)}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">
+            ${name}
+            </div>`;
         }        
         cont = cont + 1;
     });
@@ -103,8 +109,7 @@ function distributeTeams() {
         });
     }
 
-    $random_btn.disabled = true;
-    console.log("hola");
+    //$random_btn.disabled = true;    
     mover_jugadores();
 
 }
@@ -125,6 +130,52 @@ function shuffleArray(array) {
     }
     return [array, indices];
 }
+
+
+function customize_teams(){
+    console.log("Customize")
+    // Parte para hacer que aparezcan los items, y que se les asigne un equipo de forma requerida
+    const $select_jugador_1 = document.getElementById('custom_team_player_1');
+    console.log($select_jugador_1.hidden);
+    if ($select_jugador_1.hidden == true){
+        const num_players = 2*document.getElementById('max_players').value;
+
+        for (let i = 0; i < num_players; i++) {
+            const $playerSelect = document.getElementById(`custom_team_player_${i+1}`);
+            $playerSelect.hidden = false;  
+            $playerSelect.removeAttribute("disabled");                        
+
+            $playerSelect.addEventListener('change', function () {
+                const selectedOption = $playerSelect.options[$playerSelect.selectedIndex];
+                const selectedValue = selectedOption.value;
+
+                console.log(selectedValue)
+            
+                // Cambia el color del <select> según la opción seleccionada
+                switch (selectedValue) {
+                    case '1':
+                        $playerSelect.style.backgroundColor = "rgb(255,75,75)";
+                        $playerSelect.style.color = 'white';
+                        break;
+                    case '2':
+                        $playerSelect.style.backgroundColor = "rgb(28,176,246)";
+                        $playerSelect.style.color = 'white';
+                        break;
+                    default:
+                        $playerSelect.style.backgroundColor = 'white';
+                        $playerSelect.style.color = 'black';
+                }
+            });
+            
+            //document.getElementById(`playerName${i+1}`).disabled = true;
+        }
+    }
+    else if ($select_jugador_1.hidden == false){
+        console.log("Se pudo submitear");
+    }
+
+}
+
 
 
 function mover_jugadores(){

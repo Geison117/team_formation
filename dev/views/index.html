@@ -19,7 +19,7 @@
         <span>Football Team Organizer</span> 
         <span>⚽</span>
     </div>
-    
+
     <img id = "imagen_inicio" src="../assets/img/chilena.png" class="figure-img img-fluid rounded" alt="...">
 
     
@@ -28,8 +28,8 @@
         <div class="mb-3">
             <label for="max_players" class="form-label"></label>            
             <div    class="input-group">
-                <select class="form-select" aria-label="Default select example" id="max_players" required>
-                    <option selected disabled="disabled">Select the number of players</option>
+                <select class="form-select" aria-label="Default select example" id="max_players" name="cuantos jugaran" required>
+                    <option selected disabled="disabled" value="">Select the number of players</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -59,8 +59,15 @@
             <div id = "inputs">
                                 
             </div>   
-            <div style="align-items: center; display: flex; align-items: center; flex-direction: column;" >
-                <button hidden id="distribute_random" type="submit"  class="btn btn-primary">Distribute players randomly</button>
+            <div class="input-group" style="display: flex; align-items: center; flex-direction: row; justify-content: center; flex-wrap: wrap;" >
+                <button hidden id="distribute_random" type="submit"  class="botones_recurrentes">
+                    <img id = "imagen_inicio" src="../assets/icons/random.png" class="figure-img img-fluid rounded" alt="...">
+                    Distribute randomly
+                </button>
+                <button hidden id="custom_teams" type="submit"  class="botones_recurrentes">
+                    <img id = "imagen_inicio" src="../assets/icons/elegir.png" class="figure-img img-fluid rounded" alt="...">
+                    Customize teams
+                </button>
             </div> 
             
         </form>

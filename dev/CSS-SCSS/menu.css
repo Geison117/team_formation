@@ -178,6 +178,9 @@ form {
 }
 
 .botones_recurrentes{
+    display: flex;
+    align-items: center; /* Alinea el contenido verticalmente */
+    justify-content: center; /* Alinea el contenido horizontalmente */
     background-color: #58cc02;
     color: white; /* Texto blanco */
     font-weight: bold;
@@ -188,6 +191,12 @@ form {
     transition: background 0.3s, transform 0.2s;
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    height: 50px;
+}
+
+.botones_recurrentes img {
+    width: 24px; /* Ajusta el tamaño según sea necesario */
+    height: 24px; /* Ajusta el tamaño según sea necesario */
 }
 
 
@@ -205,4 +214,20 @@ form {
 
 #reload_button:disabled{
     background-color: rgb(255,100,100);
+}
+
+#custom_teams {
+    background-color: rgb(255,150,0);
+}
+
+#custom_teams:disabled{
+    background-color: rgb(255,115,15);
+}
+
+#distribute_random {
+    background-color: rgb(28,176,246);
+}
+
+#distribute_random:disabled{
+    background-color: rgb(48,200,255);
 }

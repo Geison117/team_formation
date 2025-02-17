@@ -4,6 +4,7 @@ function addInputs() {
     const $container = document.getElementById("inputs");
     const $names = document.getElementById("names");
     const $nadistribute_random = document.getElementById("distribute_random");
+    const $custom_teams_btn = document.getElementById("custom_teams");
     const $reload_boton = document.getElementById("reload_button");  
     
     if (!num_players) {
@@ -17,7 +18,13 @@ function addInputs() {
         $container.innerHTML +=  
             `<div class="input-group mb-3 mt-3 several_inputs">
                 <span class="input-group-text" style="background-color:#58cc02; color: white; font-weight: bold;">Player ${i+1}</span>
-                <input required type="text" class="form-control" placeholder="Enter the name of the player ${i+1}" aria-label="Username" aria-describedby="basic-addon1" id = "playerName${i+1}" style = "max-width:250px; min-width:250px">
+                <input required type="text" class="form-control" placeholder="Name of the player ${i+1}" aria-label="Username" aria-describedby="basic-addon1" id = "playerName${i+1}" style = "max-width:170px; min-width:170px">
+
+                <select hidden class="form-select" aria-label="Default select example" id="custom_team_player_${i+1}"  disabled required>
+                    <option  selected disabled value="">Select the team</option>
+                    <option value="1" style = "background-color: rgb(255,75,75); color: #ffffff">Red Team</option>
+                    <option value="2" style = "background-color: rgb(28,176,246); color: #ffffff">Blue Team</option>              
+                </select>
             </div>`;
 
         console.log(`playerName${i+1}`);
@@ -30,6 +37,7 @@ function addInputs() {
     
     $names.hidden = false;
     $nadistribute_random.hidden = false;
+    $custom_teams_btn.hidden = false;
 
     $reload_boton.disabled = false;  
 }
@@ -52,6 +60,8 @@ function reset_number_of_players(){
     const $cancha = document.getElementById('espacio_cancha');
     const $teamAList = document.querySelector('#TeamA ul');
     const $teamBList = document.querySelector('#TeamB ul');
+    const $custom_teams_btn = document.getElementById("custom_teams");
+
 
 
     $container.innerHTML =  ``;   
@@ -67,5 +77,6 @@ function reset_number_of_players(){
     $team_list.hidden = true;  
     $nadistribute_random.hidden = true;       
     $nadistribute_random.disabled = false;  
+    $custom_teams_btn.hidden = true;
 
 }
