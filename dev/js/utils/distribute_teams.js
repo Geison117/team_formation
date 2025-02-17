@@ -138,6 +138,9 @@ function customize_teams(){
     const $select_jugador_1 = document.getElementById('custom_team_player_1');
     console.log($select_jugador_1.hidden);
     if ($select_jugador_1.hidden == true){
+        const $random_btn = document.getElementById('distribute_random');
+        $random_btn.disabled = true;
+
         const num_players = 2*document.getElementById('max_players').value;
 
         for (let i = 0; i < num_players; i++) {
@@ -148,7 +151,7 @@ function customize_teams(){
             $playerSelect.addEventListener('change', function () {
                 const selectedOption = $playerSelect.options[$playerSelect.selectedIndex];
                 const selectedValue = selectedOption.value;
-
+                
                 console.log(selectedValue)
             
                 // Cambia el color del <select> según la opción seleccionada
@@ -171,8 +174,112 @@ function customize_teams(){
         }
     }
     else if ($select_jugador_1.hidden == false){
-        console.log("Se pudo submitear");
+        const $random_btn = document.getElementById('distribute_random');
+        const $team_list = document.getElementById('team_list');
+        const $cancha = document.getElementById('espacio_cancha');
+
+        const num_players = 2*document.getElementById('max_players').value;        
+        // Asignar los nombres a los equipos
+        const teamAList = document.querySelector('#TeamA ul');
+        const teamBList = document.querySelector('#TeamB ul');
+
+        teamAList.innerHTML = ``;
+        teamBList.innerHTML = ``;
+        $cancha.innerHTML = ``;
+
+        var contRojos = 1;
+        var contAzules = 1;
+
+        for (let i = 0; i < num_players; i++) {
+            const $playerSelect = document.getElementById(`custom_team_player_${i+1}`);            
+            const selectedOption = $playerSelect.options[$playerSelect.selectedIndex];
+            const $playerName = document.getElementById(`playerName${i+1}`);
+            const playerName = document.getElementById(`playerName${i+1}`).value;
+            const selectedValue = selectedOption.value;
+
+            const listItem = document.createElement('li');
+            listItem.textContent = playerName;
+            listItem.id = `tabla_${i+1}`;
+
+            
+            if (selectedValue == "1"){
+                teamAList.appendChild(listItem);
+
+                if (contRojos == 1) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="rojo" style="top: ${6.25 - 2.5}%; left: ${50- 7/2}%;">${playerName}</div>`;            
+                }
+        
+                else if (contRojos >= 2 && contRojos <= 5) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="rojo" style="top: ${6.25*3-2.5}%; left: ${ 12.5*(2*(contRojos-2)+1) - 3.5 }%;">${playerName}</div>`;
+                }
+        
+                else if (contRojos >= 6 && contRojos <= 8) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="rojo" style="top: ${6.25*5-2.5}%; left: ${ 16.7*(2*(contRojos-6)+1) - 3.5 }%;">${playerName}</div>`;
+                }
+        
+                else if (contRojos >= 9 && contRojos <= 11) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="rojo" style="top: ${6.25*7-2.5}%; left: ${ 16.7*(2*(contRojos-9)+1) - 3.5 }%;">${playerName}</div>`;
+                }
+                else {
+                    alert("It is not allowed to have more than 11 players in the Red team");
+                    return
+                }  
+                
+        
+                contRojos = contRojos + 1;
+            }
+            else if (selectedValue == "2"){
+                teamBList.appendChild(listItem);
+
+                if (contAzules == 1) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="azul" style="top: ${100-(6.25 + 2.5)}%; left: ${50- 7/2}%;">${playerName}</div>`;
+                }
+        
+                else if (contAzules >= 2 && contAzules <= 5) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="azul" style="top: ${100-(6.25*3 + 2.5)}%; left: ${ 12.5*(2*(contAzules-2)+1) - 3.5 }%;">${playerName}</div>`;
+                }
+        
+                else if (contAzules >= 6 && contAzules <= 8) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="azul" style="top: ${100-(6.25*5 + 2.5)}%; left: ${ 16.7*(2*(contAzules-6)+1) - 3.5 }%;">${playerName}</div>`;
+                }
+        
+                else if (contAzules >= 9 && contAzules <= 11) {
+                    $cancha.innerHTML += 
+                    `<div id="listado_${i+1}" class="jugador" equipo="azul" style="top: ${100-(6.25*7 + 2.5)}%; left: ${ 16.7*(2*(contAzules-9)+1) - 3.5 }%;">
+                    ${playerName}
+                    </div>`;
+                }  
+                else {
+                    alert("It is not allowed to have more than 11 players in the Blue team");
+                    return
+                }      
+                contAzules = contAzules + 1;
+            }
+
+            
+        
+            $playerName.addEventListener('input', ()=>{
+                const $playerNameListed = document.getElementById(`listado_${i+1}`);
+                const $playerNameTable = document.getElementById(`tabla_${i+1}`);
+                console.log(i+1)
+                $playerNameListed.innerHTML = $playerName.value;
+                $playerNameTable.innerHTML = $playerName.value;
+            });
+        }
+
+        
+        $team_list.hidden = false;
+        $random_btn.disabled = false;
     }
+
+    mover_jugadores();
 
 }
 
