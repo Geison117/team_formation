@@ -1,10 +1,7 @@
 function distributeTeams() {
     
     const num_players = 2*document.getElementById('max_players').value;
-    const $random_btn = document.getElementById('distribute_random');
-    const $team_list = document.getElementById('team_list');
-    const $cancha = document.getElementById('espacio_cancha');
-    $team_list.hidden = false;
+    const $cancha = document.getElementById('espacio_cancha');    
 
     if (!num_players) {
         alert('Please enter the number of players');
@@ -44,22 +41,34 @@ function distributeTeams() {
         teamAList.appendChild(listItem);
         if (cont == 1) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25 - 2.5}%; left: ${50- 7/2}%;">${name}</div>`;            
+            `<div class = "mover_jugador" style="top: ${6.25 - 2.5}%; left: ${50- 7/2}%;">
+                <div class="jugador" equipo="rojo">${cont}</div>
+                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:200px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+            </div>`;            
         }
 
         else if (cont >= 2 && cont <= 5) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25*3-2.5}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">${name}</div>`;
+            `<div class = "mover_jugador"  style="top: ${6.25*3-2.5}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">
+                <div class="jugador" equipo="rojo">${cont}</div>
+                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+            </div>`;
         }
 
         else if (cont >= 6 && cont <= 8) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25*5-2.5}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">${name}</div>`;
+            `<div  class = "mover_jugador" style="top: ${6.25*5-2.5}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">
+                <div class="jugador" equipo="rojo">${cont}</div>
+                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+             </div>`;
         }
 
         else if (cont >= 9 && cont <= 11) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[cont-1]}" class="jugador" equipo="rojo" style="top: ${6.25*7-2.5}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">${name}</div>`;
+            `<div  class = "mover_jugador" style="top: ${6.25*7-2.5}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">
+                <div class="jugador" equipo="rojo" >${cont}</div>
+                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+             </div>`;
         }
         
 
@@ -75,25 +84,39 @@ function distributeTeams() {
 
         if (cont == 1) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25 + 2.5)}%; left: ${50- 7/2}%;">${name}</div>`;
+            `<div  class = "mover_jugador" style="top: ${100-(6.25 + 2.5)}%; left: ${50- 7/2}%;">
+                <div class="jugador" equipo="azul" >${num_players/2 +cont} </div>
+                <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
+            </div>
+            `;
         }
 
         else if (cont >= 2 && cont <= 5) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*3 + 2.5)}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">${name}</div>`;
+
+            `<div  class = "mover_jugador" style="top: ${100-(6.25*3 + 2.5)}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">
+                <div  class="jugador" equipo="azul" >${num_players/2 +cont}</div>
+                <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
+            </div>`;
         }
 
         else if (cont >= 6 && cont <= 8) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*5 + 2.5)}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">${name}</div>`;
+            `<div  class = "mover_jugador" style="top: ${100-(6.25*5 + 2.5)}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">
+            <div class="jugador" equipo="azul">${num_players/2 +cont}</div>
+            <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
+            </div>`;
         }
 
         else if (cont >= 9 && cont <= 11) {
             $cancha.innerHTML += 
-            `<div id="listado_${indices[num_players/2 +cont-1]}" class="jugador" equipo="azul" style="top: ${100-(6.25*7 + 2.5)}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">
-            ${name}
+            `<div  class = "mover_jugador" style="top: ${100-(6.25*7 + 2.5)}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">
+                <div class="jugador" equipo="azul">
+                ${num_players/2 +cont}
+                </div>
+                <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
             </div>`;
-        }        
+        }                                
         cont = cont + 1;
     });
 
@@ -287,7 +310,7 @@ function customize_teams(){
 
 function mover_jugadores(){
 
-    const jugadores = document.querySelectorAll('.jugador');
+    const jugadores = document.querySelectorAll('.mover_jugador');
     const cancha = document.querySelector('.cancha');
   
     jugadores.forEach(jugador => {
@@ -325,8 +348,11 @@ function mover_jugadores(){
             jugador.style.left = `${Math.min(Math.max(x, 0), maxX)}px`;
             jugador.style.top = `${Math.min(Math.max(y, 0), maxY)}px`;
           }
+
+        
   
         document.addEventListener('mousemove', moverJugador);
+        document.addEventListener('touchstart', moverJugador);        
         document.addEventListener('touchmove', moverJugador_tactil);        
         
         document.addEventListener('touchend', () => {
