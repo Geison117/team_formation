@@ -43,7 +43,7 @@ function distributeTeams() {
             $cancha.innerHTML += 
             `<div class = "mover_jugador" style="top: ${6.25 - 2.5}%; left: ${50- 7/2}%;">
                 <div class="jugador" equipo="rojo">${cont}</div>
-                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:200px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+                <div id="listado_${indices[cont-1]}" style= "color: white;  font-weight: bold; font-size: 12; max-width:200px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
             </div>`;            
         }
 
@@ -51,7 +51,7 @@ function distributeTeams() {
             $cancha.innerHTML += 
             `<div class = "mover_jugador"  style="top: ${6.25*3-2.5}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">
                 <div class="jugador" equipo="rojo">${cont}</div>
-                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+                <div id="listado_${indices[cont-1]}" style= "color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
             </div>`;
         }
 
@@ -59,7 +59,7 @@ function distributeTeams() {
             $cancha.innerHTML += 
             `<div  class = "mover_jugador" style="top: ${6.25*5-2.5}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">
                 <div class="jugador" equipo="rojo">${cont}</div>
-                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+                <div id="listado_${indices[cont-1]}" style= "color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
              </div>`;
         }
 
@@ -67,7 +67,7 @@ function distributeTeams() {
             $cancha.innerHTML += 
             `<div  class = "mover_jugador" style="top: ${6.25*7-2.5}%; left: ${ 16.7*(2*(cont-9)+1) - 3.5 }%;">
                 <div class="jugador" equipo="rojo" >${cont}</div>
-                <div id="listado_${indices[cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
+                <div id="listado_${indices[cont-1]}" style= "color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal; ">${name}</div>
              </div>`;
         }
         
@@ -86,7 +86,7 @@ function distributeTeams() {
             $cancha.innerHTML += 
             `<div  class = "mover_jugador" style="top: ${100-(6.25 + 2.5)}%; left: ${50- 7/2}%;">
                 <div class="jugador" equipo="azul" >${num_players/2 +cont} </div>
-                <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
+                <div id="listado_${indices[num_players/2 +cont-1]}" style= "color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
             </div>
             `;
         }
@@ -96,7 +96,7 @@ function distributeTeams() {
 
             `<div  class = "mover_jugador" style="top: ${100-(6.25*3 + 2.5)}%; left: ${ 12.5*(2*(cont-2)+1) - 3.5 }%;">
                 <div  class="jugador" equipo="azul" >${num_players/2 +cont}</div>
-                <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
+                <div id="listado_${indices[num_players/2 +cont-1]}" style= "color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
             </div>`;
         }
 
@@ -104,7 +104,7 @@ function distributeTeams() {
             $cancha.innerHTML += 
             `<div  class = "mover_jugador" style="top: ${100-(6.25*5 + 2.5)}%; left: ${ 16.7*(2*(cont-6)+1) - 3.5 }%;">
             <div class="jugador" equipo="azul">${num_players/2 +cont}</div>
-            <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
+            <div id="listado_${indices[num_players/2 +cont-1]}" style= "color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
             </div>`;
         }
 
@@ -114,7 +114,7 @@ function distributeTeams() {
                 <div class="jugador" equipo="azul">
                 ${num_players/2 +cont}
                 </div>
-                <div id="listado_${indices[num_players/2 +cont-1]}" style= "background-color: black; color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
+                <div id="listado_${indices[num_players/2 +cont-1]}" style= "color: white; max-width:100px; overflow-wrap: break-word; word-wrap: break-word; white-space: normal;">${name}</div>
             </div>`;
         }                                
         cont = cont + 1;
