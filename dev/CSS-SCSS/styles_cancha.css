@@ -1,9 +1,9 @@
 
 .cancha {
   position: relative;
+  display: flex;
   width: 420.4px;
   height: 602.6px;
-  margin: 0px auto;
   /*background-image: url('../assets/img/cancha.jpg'); /* Imagen de una cancha de fútbol */
   background: linear-gradient(rgba(19, 31, 36, 0.5), rgba(19, 31, 36, 0.5)), url('../assets/img/cancha.jpg');
   background-size: cover;

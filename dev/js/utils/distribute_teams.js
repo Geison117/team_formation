@@ -1,21 +1,25 @@
 function distributeTeams() {
     
     const num_players = 2*document.getElementById('max_players').value;
-    const $cancha = document.getElementById('espacio_cancha');    
+    const $cancha = document.getElementById('espacio_cancha');        
+    const $players_list = document.getElementById('players_list');    
+    
 
     if (!num_players) {
         alert('Please enter the number of players');
         return;
     }
 
-    // Recopilar todos los nombres de los jugadores
-    let playerNames = [];
-    for (let i = 0; i < num_players; i++) {
-        const playerName = document.getElementById(`playerName${i+1}`).value;
-        playerNames.push(playerName);
-        //document.getElementById(`playerName${i+1}`).disabled = true;
-    }
+    // Dividir los nombres de los jugadores en un array
+    let playerNames = $players_list.value.split('\n');    
+    playerNames = playerNames.filter(elemento => elemento !== '');
 
+
+    if (playerNames.length != num_players){
+        alert(`The list should have ${num_players} players`);
+        return
+    }
+    let indices = [];
     // Mezclar la lista de nombres de forma aleatoria
     [playerNames, indices] = shuffleArray(playerNames);
 
@@ -120,17 +124,6 @@ function distributeTeams() {
         cont = cont + 1;
     });
 
-    for (let i = 1; i <= num_players; i++) {
-        const $playerName = document.getElementById(`playerName${i}`);
-        
-        $playerName.addEventListener('input', ()=>{
-            const $playerNameListed = document.getElementById(`listado_${i}`);
-            const $playerNameTable = document.getElementById(`tabla_${i}`);
-
-            $playerNameListed.innerHTML = $playerName.value;
-            $playerNameTable.innerHTML = $playerName.value;
-        });
-    }
 
     //$random_btn.disabled = true;    
     mover_jugadores();
