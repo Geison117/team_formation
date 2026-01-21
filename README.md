@@ -1,9 +1,5 @@
 # ⚽ Football Team Organizer
 
-A **portfolio-ready frontend web project** built with **HTML, CSS, and Vanilla JavaScript**, designed to demonstrate clean UI design, DOM manipulation, and interactive logic. The application solves a real-world problem: quickly and fairly organizing football (soccer) teams for friendly matches.
-
-This project is intended to showcase practical frontend skills to **recruiters and hiring managers**, with a focus on usability, clarity, and maintainable code.
-
 ---
 
 ## 🎯 Project Overview
@@ -15,7 +11,6 @@ Football Team Organizer allows users to:
 * Instantly generate balanced teams
 * Visualize team distribution on a football pitch
 
-The app requires **no backend, no frameworks, and no build tools**, making it lightweight, fast, and easy to understand.
 
 ---
 
@@ -146,28 +141,6 @@ The repository includes screenshots showing:
 * Visual football pitch with assigned players
 <img width="428" height="617" alt="image" src="https://github.com/user-attachments/assets/822c4111-37e0-4b89-926e-778866a2b22f" />
 
----
-
-## 💼 Why This Project Matters
-
-This project demonstrates the ability to:
-
-* Translate a real-life need into a functional web solution
-* Build interactive applications without heavy frameworks
-* Focus on usability and clarity
-* Deliver a complete, presentable frontend project
-
-Ideal as a **junior / frontend developer portfolio piece**.
-
----
-
-## 🚧 Possible Enhancements
-
-* Skill-based team balancing algorithm
-* Support for multiple teams
-* Player position selection
-* Persistent data (localStorage)
-* Mobile-first optimization
 
 ---
 
