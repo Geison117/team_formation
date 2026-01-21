@@ -144,6 +144,7 @@ The repository includes screenshots showing:
 * Player configuration section
 * Generated teams
 * Visual football pitch with assigned players
+<img width="428" height="617" alt="image" src="https://github.com/user-attachments/assets/822c4111-37e0-4b89-926e-778866a2b22f" />
 
 ---
 
